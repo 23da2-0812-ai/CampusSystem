@@ -12,6 +12,11 @@ import structures.CampusGraph;
 /**
  * University Student Record and Campus Route Management System
  * Menu-driven console application.
+ *
+ * @author ABF. Aneesiya (23DA2-0812)
+ * @author AM. Aathif (23DA2-0725)
+ * @author IM. Suja (23DA2-0724)
+ * @author IA. Sama (23DA2-0938)
  */
 public class Main {
 
@@ -44,13 +49,14 @@ public class Main {
                 case 12: addCampusConnection(); break;
                 case 13: removeCampusConnection(); break;
                 case 14: graph.displayConnections(); break;
-                case 15: traverseCampus(); break;
-                case 16:
+                case 15: traverseCampusBFS(); break;
+                case 16: traverseCampusDFS(); break;
+                case 17:
                     running = false;
                     System.out.println("Exiting. Goodbye!");
                     break;
                 default:
-                    System.out.println("Invalid choice. Please enter a number between 1 and 16.");
+                    System.out.println("Invalid choice. Please enter a number between 1 and 17.");
             }
             System.out.println();
         }
@@ -74,7 +80,8 @@ public class Main {
         System.out.println("13. Remove Campus Connection/Road");
         System.out.println("14. Display Campus Connections");
         System.out.println("15. Traverse Campus Locations using BFS");
-        System.out.println("16. Exit");
+        System.out.println("16. Traverse Campus Locations using DFS");
+        System.out.println("17. Exit");
     }
 
     // ---------- Student record operations ----------
@@ -120,10 +127,13 @@ public class Main {
         }
     }
 
+    // Deletes the student from the linked list, the BST and the hash table
     private static void deleteStudent() {
         String id = readLine("Enter Student ID to delete: ");
         Student deleted = list.delete(id);
         if (deleted != null) {
+            bst.delete(id);
+            hashTable.remove(id);
             actionStack.push("Deleted student " + id);
             System.out.println("Student deleted successfully.");
         } else {
@@ -188,13 +198,22 @@ public class Main {
         System.out.println(removed ? "Connection removed." : "Error: Connection not found.");
     }
 
-    private static void traverseCampus() {
+    private static void traverseCampusBFS() {
         String start = readLine("Enter starting location for BFS: ");
         if (!graph.hasLocation(start)) {
             System.out.println("Error: Location not found.");
             return;
         }
         System.out.println("BFS Traversal: " + graph.bfs(start));
+    }
+
+    private static void traverseCampusDFS() {
+        String start = readLine("Enter starting location for DFS: ");
+        if (!graph.hasLocation(start)) {
+            System.out.println("Error: Location not found.");
+            return;
+        }
+        System.out.println("DFS Traversal: " + graph.dfs(start));
     }
 
     // ---------- Input helper methods (handle invalid input) ----------

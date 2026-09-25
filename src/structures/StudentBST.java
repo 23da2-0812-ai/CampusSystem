@@ -58,6 +58,47 @@ public class StudentBST {
         return cmp < 0 ? searchRec(node.left, id) : searchRec(node.right, id);
     }
 
+    /** Deletes a student by ID. Returns false if the ID is not found. */
+    public boolean delete(String id) {
+        if (search(id) == null) {
+            return false; // nothing to delete
+        }
+        root = deleteRec(root, id);
+        return true;
+    }
+
+    private Node deleteRec(Node node, String id) {
+        if (node == null) {
+            return null;
+        }
+        int cmp = id.compareTo(node.student.getId());
+        if (cmp < 0) {
+            node.left = deleteRec(node.left, id);
+        } else if (cmp > 0) {
+            node.right = deleteRec(node.right, id);
+        } else {
+            // Case 1 and 2: no child, or only one child
+            if (node.left == null) {
+                return node.right;
+            }
+            if (node.right == null) {
+                return node.left;
+            }
+            // Case 3: two children. Replace with the smallest node of the right subtree
+            Node successor = findMin(node.right);
+            node.student = successor.student;
+            node.right = deleteRec(node.right, successor.student.getId());
+        }
+        return node;
+    }
+
+    private Node findMin(Node node) {
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
+
     /** Prints all students in sorted order of Student ID (in-order traversal). */
     public void displayInOrder() {
         if (root == null) {
