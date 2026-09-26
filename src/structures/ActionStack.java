@@ -7,6 +7,7 @@ package structures;
  *
  * @author AATHIF (23DA2-0725)
  */
+// Verified by Aathif - Stack and Queue implementation
 public class ActionStack {
 
     // Node of the stack
