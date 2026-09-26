@@ -71,6 +71,7 @@ Implemented CampusGraph.java, an adjacency-list graph representing campus locati
 
 ## Project Structure
 
+```
 CampusSystem/
   src/
     app/
@@ -85,6 +86,7 @@ CampusSystem/
       StudentHashTable.java       - Requirement 6, Hashing
       CampusGraph.java            - Requirement 7-11, Graph (BFS + DFS)
   README.md
+```
 
 ---
 
@@ -108,6 +110,7 @@ CampusSystem/
 
 ## Menu Options
 
+```
 1.  Add Student Record
 2.  Update Student Record
 3.  Delete Student Record
@@ -125,14 +128,15 @@ CampusSystem/
 15. Traverse Campus Locations using BFS
 16. Traverse Campus Locations using DFS
 17. Exit
+```
 
 ---
 
 ## How to Run
 
 1. Open the project in Eclipse (or any Java IDE).
-2. Run app/Main.java as a Java Application.
-3. Use the on-screen menu (options 1-17) to interact with the system.
+2. Run `app/Main.java` as a Java Application.
+3. Use the on-screen menu (options 1–17) to interact with the system.
 4. Select option 17 to exit the application.
 
 ---
@@ -141,8 +145,8 @@ CampusSystem/
 
 Both BFS and DFS were tested on the same campus graph starting from the location "Library", to confirm each traversal produces the correct, expected order:
 
-- DFS Traversal (Option 16): Library, Canteen, Auditorium, Admin Block. DFS goes as deep as possible before backtracking, which matches the expected output.
-- BFS Traversal (Option 15): Library, Canteen, Admin Block, Auditorium. BFS visits Library's direct neighbours first before moving further out into the network, which matches the expected output.
+- **DFS Traversal (Option 16):** Library, Canteen, Auditorium, Admin Block. DFS goes as deep as possible before backtracking, which matches the expected output.
+- **BFS Traversal (Option 15):** Library, Canteen, Admin Block, Auditorium. BFS visits Library's direct neighbours first before moving further out into the network, which matches the expected output.
 
 The following cases were also tested and handled correctly:
 
@@ -151,7 +155,7 @@ The following cases were also tested and handled correctly:
 - Deleting a record that does not exist is handled without crashing.
 - Entering an invalid or non-existent location name for BFS/DFS returns a clear error message without crashing the program.
 - Adding a connection between two locations that do not exist is rejected.
-- Marks outside the range 0-100 are rejected during input validation.
+- Marks outside the range 0–100 are rejected during input validation.
 - Non-numeric input at menu prompts is handled without crashing.
 
 ---
