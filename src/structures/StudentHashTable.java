@@ -9,6 +9,7 @@ import model.Student;
  *
  * @author SUJA (23DA2-0724)
  */
+//Verified by Suja - Hashing implementation
 public class StudentHashTable {
 
     // Node for chaining (collision handling)

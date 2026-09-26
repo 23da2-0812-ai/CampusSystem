@@ -7,6 +7,7 @@ import model.Student;
  *
  * @author SUJA (23DA2-0724)
  */
+//Verified by Suja - BST implementation
 public class StudentBST {
 
     // Node of the tree
